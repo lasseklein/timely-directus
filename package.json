@@ -1,0 +1,14 @@
+{
+  "name": "timely-directus",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "docker-compose up -d",
+    "stop": "docker-compose down",
+    "update": "docker-compose pull",
+    "snapshot": "docker-compose exec directus npx directus schema snapshot /directus/snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml",
+    "snapshot-apply": "docker-compose exec directus npx directus schema apply /directus/snapshots/$npm_config_snapshot",
+    "snapshot-test": "docker-compose exec directus npx directus schema apply --dry-run /directus/snapshots/$npm_config_snapshot"
+  },
+  "dependencies": {
+  }
+}
